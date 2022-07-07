@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+{% autoescape false %}
+    <h2><a class="article-title" href="#">Login Success!</a></h2>
+    <br>
+    {% for user in users %}
+        <article class="media content-section">
+          <div class="media-body">
+            <h2><a class="article-title" href="#">{{ user[0] }}</a></h2>
+            <p class="article-content">
+                Email: {{ user[1] }} <br>
+                Phone: {{ user[2] }} <br>
+                Birthdate: {{ user[3] }} <br>
+                Gender: {{ user[4] }} <br>
+                Password: {{ user[5] }} <br>
+            </p>
+          </div>
+        </article>
+    {% endfor %}
+{% endautoescape %}
+{% endblock content %}

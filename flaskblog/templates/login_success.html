@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+{% autoescape false %}
+    <h2><a class="article-title" href="#">Login Success!</a></h2>
+    <br>
+        <article class="media content-section">
+          <div class="media-body">
+            <h2><a class="article-title" href="#">{{ users[0] }}</a></h2>
+            <p class="article-content">
+                Email: {{ users[1] }} <br>
+                Password: {{ users[2] }} <br>
+            </p>
+          </div>
+        </article>
+{% endautoescape %}
+{% endblock content %}
+

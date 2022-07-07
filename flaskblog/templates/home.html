@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="POST" action="">
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Search Posts</legend>
+                <div class="form-group">
+                    {{ form.searched.label(class="form-control-label") }}
+                    {% if form.searched.errors %}
+                        {{ form.searched(class="form-control form-control-lg is-invalid", ) }}
+                        <div class="invalid-feedback">
+                            {% for error in form.searched.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.searched(class="form-control form-control-lg", ) }}
+                    {% endif %}
+                </div>
+                
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+{%if posts is none %}
+    <h1>Be the first to post here!</h1>
+{%else%}
+    {% for post in posts %}
+       <article class="media content-section">
+
+            <div class="media-body">
+            <div class="article-metadata">
+            </div>
+            <h2 class="article-title">{{ post[1] }}</h2>
+            <p class="article-content">{{ post[2] }}</p>
+            </div>
+        </article>
+        <!-- Modal -->
+
+    {% endfor %}
+
+{%endif%}
+
+{% endblock content %}
