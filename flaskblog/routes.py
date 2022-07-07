@@ -93,15 +93,10 @@ def home():
         try:
             c.execute("SELECT * FROM post WHERE title='{}'".format(form.searched.data))
             # user = c.fetchall()
-
-            posts = c.fetchall()
-            conn.commit()
-            conn.close()
-            print(posts)
         except:
             c.executescript("SELECT * FROM post WHERE title='{}'".format(form.searched.data))
             # user = c.fetchall()
-
+        finally:
             posts = c.fetchall()
             conn.commit()
             conn.close()
