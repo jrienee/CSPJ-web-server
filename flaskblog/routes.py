@@ -90,13 +90,22 @@ def home():
         conn = sqlite3.connect('site.db')
         c = conn.cursor()
 
-        c.execute("SELECT * FROM post WHERE title='{}'".format(form.searched.data))
-        # user = c.fetchall()
+        try:
+            c.execute("SELECT * FROM post WHERE title='{}'".format(form.searched.data))
+            # user = c.fetchall()
 
-        posts = c.fetchall()
-        conn.commit()
-        conn.close()
-        print(posts)
+            posts = c.fetchall()
+            conn.commit()
+            conn.close()
+            print(posts)
+        except:
+            c.executescript("SELECT * FROM post WHERE title='{}'".format(form.searched.data))
+            # user = c.fetchall()
+
+            posts = c.fetchall()
+            conn.commit()
+            conn.close()
+            print(posts)
     else:
         conn = sqlite3.connect('site.db')
         c = conn.cursor()
